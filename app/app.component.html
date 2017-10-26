@@ -1,7 +1,15 @@
 <div class="recipe-list">
+  <br>
+  <select (change)="onChange($event.target.value)">
+    <option value="all">All</option>
+    <option value="made">Tried</option>
+    <option value="unmade">New</option>
+  </select>
   <h2>Recipes:</h2>
   <ul>
-    <li *ngFor="let currentRecipe of masterRecipeList">{{currentRecipe.title}}
+    <li *ngFor="let currentRecipe of masterRecipeList | made:filterByMade">{{currentRecipe.title}}
+      <input *ngIf="currentRecipe.done === true" type="checkbox"  (click)="toggleDone(currentRecipe, false)"/>
+      <input *ngIf="currentRecipe.done === false" type="checkbox" checked (click)="toggleDone(currentRecipe, true)"/>
       <button type="button" class="btn" (click)="editButtonHasBeenClicked(currentRecipe)">Edit</button>
     </li>
   </ul>

@@ -9,6 +9,7 @@ import { Recipe } from './recipe.model'
 
 
 export class AppComponent {
+  filterByMade: string = "unmade";
   selectedRecipe = null;
   masterRecipeList: Recipe[] = [
    new Recipe(
@@ -39,5 +40,14 @@ export class AppComponent {
  doneEditing(){
    this.selectedRecipe = null;
  }
+
+ onChange(option) {
+   this.filterByMade = option;
+ }
+
+ toggleDone(clickedRecipe: Recipe, setMade: boolean) {
+   clickedRecipe.done = setMade;
+ }
+
 
 }
