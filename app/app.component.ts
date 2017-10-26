@@ -9,6 +9,7 @@ import { Recipe } from './recipe.model'
 
 
 export class AppComponent {
+  selectedRecipe = null;
   masterRecipeList: Recipe[] = [
    new Recipe(
      "Mac N Cheese",
@@ -29,6 +30,14 @@ export class AppComponent {
 
  addRecipeChild(newRecipe: Recipe) {
    this.masterRecipeList.push(newRecipe);
+ }
+
+ editButtonHasBeenClicked(clickedRecipe){
+   this.selectedRecipe = clickedRecipe;
+ }
+
+ doneEditing(){
+   this.selectedRecipe = null;
  }
 
 }
